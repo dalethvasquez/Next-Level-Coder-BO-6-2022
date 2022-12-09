@@ -12,7 +12,7 @@ class Obstacle(Sprite):
         screen.blit(self.image[self.type], self.rect) 
         
 
-    def update(self, game_speed, obstacles):
+    def update(self,  game_speed, obstacles):
         self.rect.x -= game_speed
         if self.rect.x < 0:
           obstacles.pop()

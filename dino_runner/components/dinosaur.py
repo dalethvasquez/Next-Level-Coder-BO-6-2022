@@ -28,6 +28,7 @@ class Dinosaur(Sprite):
     def setup_states(self):
         self.has_power_up = False #si el dino tiene power
         self.shield = False #si el dino tiene un escudo
+        self.show_text = False
         self.shield_time_up = 0 # el tiempo del escudo
 
         
@@ -93,12 +94,21 @@ class Dinosaur(Sprite):
 
     
 
-    def check_invincibility(self):
+    def check_invincibility(self, screen):
          if self.shield:
-             time_to_show = round((self.shield_time_up - pygame.time.get_ticks()) / 1000, 2)
-             if not time_to_show >= 0:
+            time_to_show = round((self.shield_time_up - pygame.time.get_ticks()) / 1000, 2)
+
+            if time_to_show >= 0:
+                if self.show_text:
+                    fond = pygame.font.Font('freesansbold.ttf', 18)
+                    text = fond.render('Shield enable for {time_to_show}', True,(0,0,0))
+                    text_rect = text.get_rect()
+                    text_rect.center = (500, 40)
+                    screen.blit(text,text_rect)
+            else:
                 self.shield = False
                 self.update_to_default(SHIELD_TYPE)
+             
 
     def update_to_default (self, current_type):
          if self.type == current_type:

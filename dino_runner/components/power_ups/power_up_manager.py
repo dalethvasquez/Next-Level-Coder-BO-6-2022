@@ -33,6 +33,7 @@ class PowerUpManager:
             if player.dino_rect.colliderect(power_up.rect):
                 power_up.start_time = pygame.time.get_ticks ()
                 player.shield = True
+                player.show_text = True
                 player.type = power_up.type
                 power_up.start_time = pygame.time.get_ticks()
                 time_random = random.randrange(5, 8)

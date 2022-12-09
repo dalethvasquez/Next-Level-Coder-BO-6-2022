@@ -3,6 +3,7 @@ import pygame
 
 if __name__ == "__main__":
     game = Game()
-    game.run()
-    print("hello there...")
-    
+    while game.running:
+        
+        if not game.playing:
+            game.show_menu() 

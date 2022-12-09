@@ -5,9 +5,9 @@ import random
 
 class LargeCactus(Obstacle):
     def __init__(self, image):
-      self.index = random.randint(0, 2)
-      
-      super().__init__(image, self.index)
+      self.type = random.randint(0, 2)
+      self.image = LARGE_CACTUS[0]
+      super().__init__(image, self.type)
       self.rect.y = 300
       
 
